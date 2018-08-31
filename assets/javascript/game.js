@@ -1,52 +1,55 @@
-        // Letter Array
-        var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-        
+var computerLetter = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var random = computerLetter[Math.floor(Math.random() * computerLetter.length)];
+var letterGuesses = [];
+var wins = 0;
+var losses = 0;
+var numGuessesLeft = 9;
 
-        // Variables with data values are declared
-        var wins = 0;
+document.onkeyup = function(event) {
+	var userGuess = event.key;
+	letterGuesses.push(userGuess);
+	var temp = document.getElementById("userGuesses");
+			temp.textContent = userGuess;
 
-        var losses = 0;
+	if (userGuess != random) {
+		numGuessesLeft--;
+		var temp = document.getElementById("guesses");
+			temp.textContent = numGuessesLeft;
+	}
 
-        var guessesLeft = 9;
+	else if (userGuess === random) {
+        wins++;
+        alert("Awesome Job! You have guessed correctly.  Your a Winner!!!");
+		var temp = document.getElementById("wins");
+			temp.textContent = wins;
 
-        var guessesMade = [];
+		numGuessesLeft = 9;
+		var temp = document.getElementById("guesses");
+			temp.textContent = numGuessesLeft;
 
-            // Game will start when user chooses any key of the alphabet
-            document.onkeyup = function(event) {      
-            
+		letterGuesses = [];
 
-        // User guess is for any key that the user presses
-        var userGuess = event.key;
+		function reset (random1) {
+			var random1 = random;
+		}
+		reset.random1();
+	}
 
-        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+	if (numGuessesLeft === 0) {
+        losses++;
+        alert("Sorry you lost! Try again");
+		var temp = document.getElementById("losses");
+			temp.textContent = losses;
 
-        // Letter choices for user to pick
-        var userChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+		numGuessesLeft = 9;
+		var temp = document.getElementById("guesses");
+			temp.textContent = numGuessesLeft;
 
-            // if(options.indexOf(userGuess)>-1){
-
-            // }
-
-            if (userGuess === computerGuess) {
-                    wins++;
-                    numGuesses = 9;
-                    guessChoices = [];
-                }
-
-            else if (userGuess != computerGuess && numGuesses >= 1) {
-                    numGuesses --;
-                    guessChoices.push(userGuess);
-                }
-
-            else {
-                losses++;
-                numGuesses = 9;
-                guessChoices = [];
-                
-            }    
-        
-
-        }
-        
-        
-  s
+		letterGuesses = [];
+		
+		function reset (random2) {
+			var random1 = random;
+		}
+		reset.random2();
+	}
+}

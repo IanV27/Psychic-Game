@@ -1,10 +1,18 @@
 body {
+    float: left;
     color: green;
     font-size: 18px;
     line-height: 34px;
     font-family: 'Arial', Helvetica, sans-serif;
     height: 100%;
     font-weight: 300;
+
+}
+
+.game {
+    color: Green;
+    font-family: Verdana, Arial, "Geneva", Arial Black;
+    
 }
 
 #game {
